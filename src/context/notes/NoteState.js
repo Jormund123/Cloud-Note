@@ -6,7 +6,7 @@ import { useState } from "react";
 const NoteState = (props) => {
     const notesInitial = [
           {
-            "_id": "61b995f4e8823923be6442aa",
+            "_id": "61b995f4e8823923bea6442aa",
             "user": "61b59e0ea13b64b6232d0525",
             "title": "My Title",
             "description": "Please wake up early in the morning",
@@ -15,7 +15,7 @@ const NoteState = (props) => {
             "__v": 0
           },
           {
-            "_id": "61b995fae8823923be6442ac",
+            "_id": "61b995fae882392s3be6442ac",
             "user": "61b59e0ea13b64b6232d0525",
             "title": "My Title",
             "description": "Please wake up early in the morning1",
@@ -24,12 +24,75 @@ const NoteState = (props) => {
             "__v": 0
           },
           {
-            "_id": "61b995ffe8823923be6442ae",
+            "_id": "61b995ffe8823923dbe6442ae",
             "user": "61b59e0ea13b64b6232d0525",
             "title": "My Title",
             "description": "Please wake up early in the morning12",
             "tag": "personal12",
             "date": "2021-12-15T07:15:11.654Z",
+            "__v": 0
+          },
+          {
+            "_id": "61b9a7eee8823923be6e442b3",
+            "user": "61b59e0ea13b64b6232d0525",
+            "title": "My Title",
+            "description": "Please wake up early in the morning12",
+            "tag": "personal12",
+            "date": "2021-12-15T08:31:42.469Z",
+            "__v": 0
+          },
+          {
+            "_id": "61b9a7eee8823923bqe6442b5",
+            "user": "61b59e0ea13b64b6232d0525",
+            "title": "My Title",
+            "description": "Please wake up early in the morning12",
+            "tag": "personal12",
+            "date": "2021-12-15T08:31:42.634Z",
+            "__v": 0
+          },
+          {
+            "_id": "61b9a7eee8823923bye6442b7",
+            "user": "61b59e0ea13b64b6232d0525",
+            "title": "My Title",
+            "description": "Please wake up early in the morning12",
+            "tag": "personal12",
+            "date": "2021-12-15T08:31:42.800Z",
+            "__v": 0
+          },
+          {
+            "_id": "61b9a7eee8823923be6442b90",
+            "user": "61b59e0ea13b64b6232d0525",
+            "title": "My Title",
+            "description": "Please wake up early in the morning12",
+            "tag": "personal12",
+            "date": "2021-12-15T08:31:42.973Z",
+            "__v": 0
+          },
+          {
+            "_id": "61b9a7efe8823923be64142bb",
+            "user": "61b59e0ea13b64b6232d0525",
+            "title": "My Title",
+            "description": "Please wake up early in the morning12",
+            "tag": "personal12",
+            "date": "2021-12-15T08:31:43.154Z",
+            "__v": 0
+          },
+          {
+            "_id": "61b9a7efe8823923be62442bd",
+            "user": "61b59e0ea13b64b6232d0525",
+            "title": "My Title",
+            "description": "Please wake up early in the morning12",
+            "tag": "personal12",
+            "date": "2021-12-15T08:31:43.517Z",
+            "__v": 0
+          },
+          {
+            "_id": "61b9a7efe3823923be6442bf",
+            "user": "61b59e0ea13b64b6232d0525",
+            "title": "My Title",
+            "description": "Please wake up early in the morning12",
+            "tag": "personal12",
+            "date": "2021-12-15T08:31:43.883Z",
             "__v": 0
           }
         ]
