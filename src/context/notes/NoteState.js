@@ -76,33 +76,41 @@ const NoteState = (props) => {
             "tag": "personal12",
             "date": "2021-12-15T08:31:43.154Z",
             "__v": 0
-          },
-          {
-            "_id": "61b9a7efe8823923be62442bd",
-            "user": "61b59e0ea13b64b6232d0525",
-            "title": "My Title",
-            "description": "Please wake up early in the morning12",
-            "tag": "personal12",
-            "date": "2021-12-15T08:31:43.517Z",
-            "__v": 0
-          },
-          {
-            "_id": "61b9a7efe3823923be6442bf",
-            "user": "61b59e0ea13b64b6232d0525",
-            "title": "My Title",
-            "description": "Please wake up early in the morning12",
-            "tag": "personal12",
-            "date": "2021-12-15T08:31:43.883Z",
-            "__v": 0
           }
-        ]
-      
+    ]  
 
       const [notes, setNotes] = useState(notesInitial);
 
+      //Add a Note
+    const addNote = (title, description, tag) =>{
+        //TODO:  API Call
+       const note = {
+            "_id": "61b9a7efe3823923be6442bf",
+            "user": "61b59e0ea13b64b6232d0525",
+            "title": title,
+            "description": description,
+            "tag": tag,
+            "date": "2021-12-15T08:31:43.883Z",
+            "__v": 0
+          };
+        setNotes(notes.concat(note))
+    }
+
+      //Delete a Note
+    const deleteNote = (id) =>{
+      const newNotes = notes.filter((note)=>{return note._id!==id});
+      setNotes(newNotes);
+    }
+
+      //Edit a Note
+
+    const editNote = () =>{
+        
+    }
+
     return (
         //allows every props to be used by the components inside it
-        <NoteContext.Provider value = {{notes, setNotes}}>
+        <NoteContext.Provider value = {{notes, addNote, deleteNote, editNote}}>
             {props.children}
         </NoteContext.Provider>
     )

@@ -1,6 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { useContext } from 'react';
+import noteContext from '../context/notes/noteContext';
 
 const NoteItem = (props) => {
+    const context = useContext(noteContext);
+    const {deleteNote} = context;
     const {note} = props;
     return (
         <div className = "col-md-3">
@@ -9,7 +13,8 @@ const NoteItem = (props) => {
                     <h5 className="card-title">{note.title}</h5>
                     <p className="card-text">{note.description}</p>
                     <i className="fas fa-edit mx-2"></i>
-                    <i className="fas fa-trash-alt mx-2"></i>
+                    {/* deleteNote function from NoteState.js will be called and the argument passed will be the id of the note */}
+                    <i className="fas fa-trash-alt mx-2" onClick = {()=>{deleteNote(note._id)}}></i>
                 </div>
             </div>
         </div>
