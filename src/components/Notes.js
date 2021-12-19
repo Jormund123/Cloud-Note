@@ -7,22 +7,22 @@ const Notes = () => {
   const context = useContext(noteContext);
   const { notes, getNote, editNote } = context; //destructuring
 
-  const [note, setNote] = useState({etitle: "", edescription: "", etag:"default"})
+  const [note, setNote] = useState({id: "", etitle: "", edescription: "", etag:"default"})
 
   useEffect(() => {
-      // eslint-disable-next-line
     getNote();
+    // eslint-disable-next-line
   }, []);
 
   const updateNote =(currentNote)=>{
 
       ref.current.click();
-      setNote({etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag});
+      setNote({id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag});
+    }
+    const handleClick = (e)=>{
+      e.preventDefault(); //so that page will not reload
       editNote(note.id, note.etitle, note.edescription, note.etag);
-  }
-  const handleClick = (e)=>{
-    e.preventDefault(); //so that page will not reload
-    ref.current.click();
+      refClose.current.click();
 
 }
 
@@ -32,7 +32,8 @@ const onChange = (e)=>{
 }
 
 
-  const ref = useRef(null)
+  const ref = useRef(null);
+  const refClose = useRef(null);
   return (
     <>
       <AddNote />
@@ -66,7 +67,7 @@ const onChange = (e)=>{
                     </form>
                 </div> 
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button ref={refClose} type="button" className="btn btn-secondary d-none" data-bs-dismiss="modal">Close</button>
                   <button type="button" className="btn btn-primary" onClick={handleClick}>Update Note</button>
                 </div>
               </div>
