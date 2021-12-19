@@ -7,8 +7,8 @@ const NoteState = (props) => {
   const notesInitial = [];
   const [notes, setNotes] = useState(notesInitial);
 
-   //Get all Note
-   const getNote = async () => {
+  //Get all Note
+  const getNote = async () => {
     //TODO:  API Call
     const response = await fetch(`${host}/api/notes/fetchallnotes`, {
       method: "GET",
@@ -22,7 +22,7 @@ const NoteState = (props) => {
     const json = await response.json();
     console.log(json);
     setNotes(json);
-  }
+  };
 
   //Add a Note
   const addNote = async (title, description, tag) => {
@@ -52,7 +52,22 @@ const NoteState = (props) => {
   };
 
   //Delete a Note
-  const deleteNote = (id) => {
+  const deleteNote = async (id) => {
+    //API Calls
+    const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+      method: "DELETE",
+
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFiNTllMGVhMTNiNjRiNjIzMmQwNTI1In0sImlhdCI6MTYzOTI5MzUxM30.hYIH3vc7PAlngnNJipaiuz4P4GiNYDsWnubBIlQBHHI",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    });
+    const json = response.json();
+    console.log(json);
+
+    //deleting note
     console.log("deleting note with id " + id);
     const newNotes = notes.filter((note) => {
       return note._id !== id;
@@ -89,7 +104,9 @@ const NoteState = (props) => {
 
   return (
     //allows every props to be used by the components inside it
-    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, getNote }}>
+    <NoteContext.Provider
+      value={{ notes, addNote, deleteNote, editNote, getNote }}
+    >
       {props.children}
     </NoteContext.Provider>
   );
