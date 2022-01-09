@@ -39,17 +39,9 @@ const NoteState = (props) => {
       body: JSON.stringify({ title, description, tag }), // body data type must match "Content-Type" header
     });
 
-    const note = {
-      _id: "61b9a7efe3823923be644wsadas2bf",
-      user: "61b59e0ea13b64b6232d0525",
-      title: title,
-      description: description,
-      tag: tag,
-      date: "2021-12-15T08:31:43.883Z",
-      __v: 0,
-    };
-    const json = response.json();
-    console.log(json);
+    
+    const note = await response.json();
+
     setNotes(notes.concat(note));
   };
 
@@ -67,10 +59,9 @@ const NoteState = (props) => {
       },
     });
     const json = response.json();
-    console.log(json);
 
     //deleting note
-    console.log("deleting note with id " + id);
+
     const newNotes = notes.filter((note) => {
       return note._id !== id;
     });
@@ -92,7 +83,6 @@ const NoteState = (props) => {
       body: JSON.stringify({ title, description, tag }), // body data type must match "Content-Type" header
     });
     const json = await response.json();
-    console.log(json);
 
       let newNotes = JSON.parse(JSON.stringify(notes)) //deepcopy
     //editing notes in client
