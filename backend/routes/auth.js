@@ -18,10 +18,7 @@ router.post(
       min: 5,
     }),
     body("email", "Invalid Email").isEmail(),
-    body(
-      "password",
-      "The length of the password should be at least 6."
-    ).isLength({ min: 6 }),
+    body("password", "The length of the password should be at least 6.").isLength({ min: 6 }),
   ],
   async (req, res) => {
     //if there are errors then bad request and errors are returned
@@ -35,9 +32,7 @@ router.post(
 
     try {
       if (user) {
-        return res
-          .status(400)
-          .json({ error: "Sorry a user with this email already exists" });
+        return res.status(400).json({ error: "Sorry a user with this email already exists" });
       }
 
       const salt = await bcrypt.genSalt(10);
@@ -71,10 +66,7 @@ router.post(
   "/login",
   [
     body("email", "Invalid Email").isEmail(),
-    body(
-      "password",
-      "The length of the password should be at least 6."
-    ).isLength({ min: 6 }),
+    body("password", "The length of the password should be at least 6.").isLength({ min: 6 }),
     body("password", "Password cannot be blank").exists(),
   ],
   async (req, res) => {
@@ -89,12 +81,11 @@ router.post(
     try {
       let user = await User.findOne({ email });
       if (!user) {
-        return res.status(400).json({success, error: "Login credientials not valid" });
+        return res.status(400).json({ success, error: "Login credientials not valid" });
       }
 
       const passwordCompare = await bcrypt.compare(password, user.password);
       if (!passwordCompare) {
-        
         return res.status(400).json({ success, error: "Login credientials not valid" });
       }
 
@@ -116,19 +107,15 @@ router.post(
 
 //Route 3
 //get logged in user details: POST "/api/auth/getuser". login required
-router.post(
-  "/getuser",
-   fetchuser,
-  async (req, res) => {
-    try {
-      userId = req.user.id;
-      const user = await User.findById(userId).select("-password"); //when getting the details of the user, password will not be shown
-      res.send(user);
-    } catch (error) {
-      console.error(error.message);
-      res.status(500).send("Something went wrong");
-    }
+router.post("/getuser", fetchuser, async (req, res) => {
+  try {
+    userId = req.user.id;
+    const user = await User.findById(userId).select("-password"); //when getting the details of the user, password will not be shown
+    res.send(user);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Something went wrong");
   }
-);
+});
 
 module.exports = router;
